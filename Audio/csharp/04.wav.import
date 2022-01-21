@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/04.wav-525c64af54ea3a86ca5c4e0261939a92.sample"
+
+[deps]
+
+source_file="res://Audio/csharp/04.wav"
+dest_files=[ "res://.import/04.wav-525c64af54ea3a86ca5c4e0261939a92.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

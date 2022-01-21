@@ -1,0 +1,226 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://OrbitCameraRig/OrbitalCameraRig.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Shape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/NotesEmitter.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/TE-Tombola.gd" type="Script" id=4]
+[ext_resource path="res://TE-Tombola.theme" type="Theme" id=5]
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 3, 3, 3 )
+
+[sub_resource type="PhysicsMaterial" id=8]
+friction = 0.0
+absorbent = true
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 3.40703, 4.06382, 0.308353 )
+
+[sub_resource type="PhysicsMaterial" id=9]
+friction = 0.0
+absorbent = true
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+space_override = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 7 )
+
+[node name="OrbitalCameraRig" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+maxZoom = 8.0
+camYOffset = 0.0
+target = NodePath("../CameraTarget")
+
+[node name="CameraTarget" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="WallBack" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7, -0.739733 )
+physics_material_override = SubResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallBack"]
+shape = SubResource( 6 )
+
+[node name="WallFront" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7, 0.736897 )
+physics_material_override = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallFront"]
+shape = SubResource( 6 )
+
+[node name="MainShape" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="Shape" parent="MainShape" instance=ExtResource( 2 )]
+transform = Transform( 1.29904, -0.05, 0, 0.75, 0.0866025, 0, 0, 0, 0.3, -1.25, 2, 0 )
+
+[node name="Shape2" parent="MainShape" instance=ExtResource( 2 )]
+transform = Transform( 1.29904, 0.05, 0, -0.75, 0.0866025, 0, 0, 0, 0.3, 1.25, 2, 0 )
+
+[node name="Shape3" parent="MainShape" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0.1, 0, -1.5, -4.37114e-09, 0, 0, 0, 0.3, 2.5, -0.2, 0 )
+
+[node name="Shape4" parent="MainShape" instance=ExtResource( 2 )]
+transform = Transform( 1.29904, -0.05, 0, 0.75, 0.0866025, 0, 0, 0, 0.3, 1.25, -2.4, 0 )
+
+[node name="Shape5" parent="MainShape" instance=ExtResource( 2 )]
+transform = Transform( 1.29904, 0.05, 0, -0.75, 0.0866025, 0, 0, 0, 0.3, -1.25, -2.4, 0 )
+
+[node name="Shape6" parent="MainShape" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0.1, 0, -1.5, -4.37114e-09, 0, 0, 0, 0.3, -2.5, -0.2, 0 )
+
+[node name="NotesEmitter" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.93906, 0 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="NotesEmitter"]
+autostart = true
+
+[node name="UI" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1024.0
+margin_top = -600.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 750.0
+margin_top = 400.0
+margin_right = -28.0
+margin_bottom = -26.0001
+custom_constants/separation = 10
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SliderSpeed" type="VBoxContainer" parent="UI/HBoxContainer"]
+margin_left = 70.0
+margin_right = 123.0
+margin_bottom = 173.0
+
+[node name="Label3" type="Label" parent="UI/HBoxContainer/SliderSpeed"]
+margin_right = 53.0
+margin_bottom = 31.0
+size_flags_vertical = 5
+text = "Rotation
+Speed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider3" type="VSlider" parent="UI/HBoxContainer/SliderSpeed"]
+margin_top = 35.0
+margin_right = 53.0
+margin_bottom = 173.0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SliderAngle" type="VBoxContainer" parent="UI/HBoxContainer"]
+margin_left = 133.0
+margin_right = 191.0
+margin_bottom = 173.0
+
+[node name="Label2" type="Label" parent="UI/HBoxContainer/SliderAngle"]
+margin_right = 58.0
+margin_bottom = 31.0
+size_flags_vertical = 5
+text = "Rortation
+Angle"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider2" type="VSlider" parent="UI/HBoxContainer/SliderAngle"]
+margin_top = 35.0
+margin_right = 58.0
+margin_bottom = 173.0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SliderGravity" type="VBoxContainer" parent="UI/HBoxContainer"]
+margin_left = 201.0
+margin_right = 246.0
+margin_bottom = 173.0
+
+[node name="Label2" type="Label" parent="UI/HBoxContainer/SliderGravity"]
+margin_right = 45.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_vertical = 5
+text = "Gravity"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider2" type="VSlider" parent="UI/HBoxContainer/SliderGravity"]
+margin_top = 34.0
+margin_right = 45.0
+margin_bottom = 173.0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.1
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnStartStop" type="VBoxContainer" parent="UI/HBoxContainer"]
+visible = false
+margin_left = 186.0
+margin_right = 262.0
+margin_bottom = 173.0
+
+[node name="Label3" type="Label" parent="UI/HBoxContainer/BtnStartStop"]
+margin_right = 76.0
+margin_bottom = 14.0
+size_flags_vertical = 5
+text = "Start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="UI/HBoxContainer/BtnStartStop"]
+margin_top = 18.0
+margin_right = 76.0
+margin_bottom = 58.0
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[connection signal="timeout" from="NotesEmitter/Timer" to="NotesEmitter" method="_on_Timer_timeout"]
+[connection signal="value_changed" from="UI/HBoxContainer/SliderSpeed/VSlider3" to="." method="_on_rotation_speed_value_changed"]
+[connection signal="value_changed" from="UI/HBoxContainer/SliderAngle/VSlider2" to="." method="_on_angle_value_changed"]
+[connection signal="value_changed" from="UI/HBoxContainer/SliderGravity/VSlider2" to="." method="_on_gravity_value_changed"]
+
+[editable path="OrbitalCameraRig"]
