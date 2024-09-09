@@ -1,48 +1,43 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://dra7b1nu4usrg"]
 
-[ext_resource path="res://Audio/csharp/01.wav" type="AudioStream" id=1]
-[ext_resource path="res://Scenes/Particle.gd" type="Script" id=2]
-[ext_resource path="res://Audio/csharp/02.wav" type="AudioStream" id=3]
-[ext_resource path="res://Audio/csharp/07.wav" type="AudioStream" id=4]
-[ext_resource path="res://Audio/csharp/04.wav" type="AudioStream" id=5]
-[ext_resource path="res://Audio/csharp/06.wav" type="AudioStream" id=6]
-[ext_resource path="res://Audio/csharp/03.wav" type="AudioStream" id=7]
-[ext_resource path="res://Audio/csharp/05.wav" type="AudioStream" id=8]
-[ext_resource path="res://Audio/csharp/14.wav" type="AudioStream" id=9]
-[ext_resource path="res://Audio/csharp/13.wav" type="AudioStream" id=10]
-[ext_resource path="res://Audio/csharp/15.wav" type="AudioStream" id=11]
-[ext_resource path="res://Audio/csharp/09.wav" type="AudioStream" id=12]
-[ext_resource path="res://Audio/csharp/08.wav" type="AudioStream" id=13]
-[ext_resource path="res://Audio/csharp/10.wav" type="AudioStream" id=14]
-[ext_resource path="res://Audio/csharp/11.wav" type="AudioStream" id=15]
-[ext_resource path="res://Audio/csharp/12.wav" type="AudioStream" id=16]
+[ext_resource type="AudioStream" uid="uid://cvu18ffhxm4a2" path="res://Audio/csharp/01.wav" id="1"]
+[ext_resource type="Script" path="res://Scenes/Particle.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://uumvee1k1wcm" path="res://Audio/csharp/07.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://cs7dic40au7hl" path="res://Audio/csharp/03.wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://naywjvbc3bqr" path="res://Audio/csharp/05.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://k7hojk2nbsjq" path="res://Audio/csharp/13.wav" id="10"]
+[ext_resource type="AudioStream" uid="uid://duwynh5qjkp6f" path="res://Audio/csharp/08.wav" id="13"]
+[ext_resource type="AudioStream" uid="uid://bf1rve0wgr0g7" path="res://Audio/csharp/10.wav" id="14"]
+[ext_resource type="AudioStream" uid="uid://64e6lmpq6ykn" path="res://Audio/csharp/12.wav" id="16"]
 
-[sub_resource type="PhysicsMaterial" id=8]
+[sub_resource type="PhysicsMaterial" id="8"]
 friction = 0.0
 bounce = 0.72
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="StandardMaterial3D" id="9"]
 vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
-[sub_resource type="SphereMesh" id=6]
+[sub_resource type="SphereMesh" id="6"]
 radial_segments = 9
 rings = 9
 
-[sub_resource type="SphereShape" id=5]
+[sub_resource type="SphereShape3D" id="5"]
 
-[node name="Particle" type="RigidBody"]
-physics_material_override = SubResource( 8 )
-script = ExtResource( 2 )
-files = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ) ]
+[node name="Particle" type="RigidBody3D"]
+physics_material_override = SubResource("8")
+script = ExtResource("2")
+files = Array[AudioStream]([ExtResource("1"), ExtResource("7"), ExtResource("8"), ExtResource("4"), ExtResource("13"), ExtResource("14"), ExtResource("16"), ExtResource("10")])
 
-[node name="CSGMesh" type="CSGMesh" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
-material_override = SubResource( 9 )
-mesh = SubResource( 6 )
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("9")
+mesh = SubResource("6")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0

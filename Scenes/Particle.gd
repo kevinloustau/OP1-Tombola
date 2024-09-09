@@ -1,9 +1,9 @@
-extends Spatial
+extends Node3D
 
-export(Array, AudioStream) var files
+@export var files: Array[AudioStream] # (Array, AudioStream)
 
-onready var audio_player := $AudioStreamPlayer
-onready var ball := $CSGMesh
+@onready var audio_player := $AudioStreamPlayer
+@onready var ball := $CSGMesh3D
 
 func _ready():
 	audio_player.stream = files[randi() % files.size()]

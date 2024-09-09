@@ -6,21 +6,22 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-}
+config_version=5
 
 [application]
 
 config/name="TE-tombola"
 run/main_scene="res://Scenes/TE-Tombola.tscn"
+config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [audio]
 
-default_bus_layout="res://Audio/audiobuslayout.tres"
+buses/default_bus_layout="res://Audio/audiobuslayout.tres"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [layer_names]
 
@@ -29,7 +30,7 @@ default_bus_layout="res://Audio/audiobuslayout.tres"
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_environment="res://default_env.tres"
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
 quality/filters/msaa=2
-environment/default_environment="res://default_env.tres"

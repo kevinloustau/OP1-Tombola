@@ -1,4 +1,4 @@
-extends MeshInstance
+extends MeshInstance3D
 
 var init_angle: Vector3
 
@@ -7,6 +7,5 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
-	if body is RigidBody:
+	if body is RigidBody3D:
 		body.play_sound()
-		
