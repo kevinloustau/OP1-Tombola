@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bycx2ob2n66pu"
+path="res://.godot/imported/a minor-011.wav-9cc9421580772ca75d735709c7f22782.sample"
+
+[deps]
+
+source_file="res://Audio/aminor_celeste/a minor-011.wav"
+dest_files=["res://.godot/imported/a minor-011.wav-9cc9421580772ca75d735709c7f22782.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

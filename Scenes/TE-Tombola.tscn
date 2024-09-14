@@ -22,11 +22,12 @@ absorbent = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waxys"]
 
-[node name="Node3D" type="Node3D"]
+[node name="App" type="Node3D"]
 script = ExtResource("4")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+gravity_space_override = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("7")
@@ -85,15 +86,11 @@ autostart = true
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1024.0
-offset_top = -600.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
@@ -126,6 +123,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+min_value = 0.1
+max_value = 1.0
+step = 0.1
+value = 0.1
 
 [node name="SliderSpeed2" type="VBoxContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
